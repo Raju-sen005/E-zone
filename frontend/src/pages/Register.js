@@ -25,40 +25,46 @@ const Register = () => {
     }));
   };
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-  
-    const { firstName, lastName, email, password } = formData;
-  
-    // validation
-    if (!firstName.trim()) return alert("First name is required");
-    if (!lastName.trim()) return alert("Last name is required");
-    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) return alert("Please enter a valid email");
-    if (password.length < 6) return alert("Password must be at least 6 characters");
-  
-    try {
-      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({ firstName, lastName, email, password })
-      });
-  
-      const data = await res.json();
-  
-      if (res.ok) {
-        alert("Registration successful!");
-        navigate("/login"); // redirect to login
-      } else {
-        alert(data.message || "Something went wrong");
-      }
-    } catch (error) {
-      console.error("Register Error:", error);
-      alert("Failed to connect to server");
+  // Register.jsx
+const handleSubmit = async (e) => {
+  e.preventDefault();
+
+  const { firstName, lastName, email, password } = formData;
+
+  if (!firstName.trim()) return alert("First name is required");
+  if (!lastName.trim()) return alert("Last name is required");
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(email)) return alert("Please enter a valid email");
+  if (password.length < 6) return alert("Password must be at least 6 characters");
+
+  try {
+    const res = await fetch(`http://localhost:5000/api/auth/register`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({ firstName, lastName, email, password })
+    });
+
+    // ✅ HTML error से बचने के लिए पहले चेक करो
+    const contentType = res.headers.get("content-type");
+    if (!res.ok) {
+      const errorText = contentType && contentType.includes("application/json")
+        ? (await res.json()).message
+        : await res.text();
+      throw new Error(errorText || "Registration failed");
     }
-  };
+
+    const data = await res.json();
+    alert(data.message || "Registered Successfully");
+    navigate("/login");
+
+  } catch (error) {
+    console.error("Register Error:", error.message);
+    alert(error.message || "Something went wrong");
+  }
+};
+
   
   return (
     <>

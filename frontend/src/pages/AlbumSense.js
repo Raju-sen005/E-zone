@@ -13,6 +13,7 @@ import { Link } from 'react-router-dom'
 const AlbumSense = () => {
   return (
     <>
+
       <div className="body-wrapper">
         <AnnouncementBar />
         <Header />
@@ -398,24 +399,27 @@ const AlbumSense = () => {
               <div className="row">
 
                 <div className="col-md-4">
-                  <div className="nav flex-column nav-pills me-3 text-black" id="v-pills-tab" role="tablist" aria-orientation="vertical">
-                    <button className="nav-link active mb-3" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Auto correct</button>
-                    <button className="nav-link mb-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hue Saturation</button>
-                    <button className="nav-link mb-3" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Blending Mode</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-1" type="button" role="tab" aria-controls="v-pills-tab-1" aria-selected="false">Brightness Contrast</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-2" type="button" role="tab" aria-controls="v-pills-tab-2" aria-selected="false">Change Color Light</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-3" type="button" role="tab" aria-controls="v-pills-tab-3" aria-selected="false">Color Balance</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-4" type="button" role="tab" aria-controls="v-pills-tab-4" aria-selected="false">Coloe Mixer Effect</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-5" type="button" role="tab" aria-controls="v-pills-tab-5" aria-selected="false">Fade</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-6" type="button" role="tab" aria-controls="v-pills-tab-6" aria-selected="false">Focus Tool</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-7-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-7" type="button" role="tab" aria-controls="v-pills-tab-7" aria-selected="false">Jewellery Highlight</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-8-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-8" type="button" role="tab" aria-controls="v-pills-tab-8" aria-selected="false">Curve & Level</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-9-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-9" type="button" role="tab" aria-controls="v-pills-tab-9" aria-selected="false">Pencil Effect</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-10-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-10" type="button" role="tab" aria-controls="v-pills-tab-10" aria-selected="false">Shadow And Highlight</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-11-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-11" type="button" role="tab" aria-controls="v-pills-tab-11" aria-selected="false">Tint And Highlight</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-12-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-12" type="button" role="tab" aria-controls="v-pills-tab-12" aria-selected="false">Toning</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-13-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-13" type="button" role="tab" aria-controls="v-pills-tab-13" aria-selected="false">Transparency On Selection</button>
-                    <button className="nav-link mb-3" id="v-pills-tab-14-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-14" type="button" role="tab" aria-controls="v-pills-tab-14" aria-selected="false">Water Color Effect</button>
+                  <div className="nav flex-column nav-pills me-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                    <button className="nav-link text-danger" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
+                      Auto correct
+                    <hr style={{width:"100%",fontWeight:"bold"}} />
+                    </button>
+                    <button className="nav-link mb-3 text-black" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hue Saturation</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Blending Mode</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-1" type="button" role="tab" aria-controls="v-pills-tab-1" aria-selected="false">Brightness Contrast</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-2" type="button" role="tab" aria-controls="v-pills-tab-2" aria-selected="false">Change Color Light</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-3" type="button" role="tab" aria-controls="v-pills-tab-3" aria-selected="false">Color Balance</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-4" type="button" role="tab" aria-controls="v-pills-tab-4" aria-selected="false">Coloe Mixer Effect</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-5" type="button" role="tab" aria-controls="v-pills-tab-5" aria-selected="false">Fade</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-6" type="button" role="tab" aria-controls="v-pills-tab-6" aria-selected="false">Focus Tool</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-7-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-7" type="button" role="tab" aria-controls="v-pills-tab-7" aria-selected="false">Jewellery Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-8-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-8" type="button" role="tab" aria-controls="v-pills-tab-8" aria-selected="false">Curve & Level</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-9-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-9" type="button" role="tab" aria-controls="v-pills-tab-9" aria-selected="false">Pencil Effect</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-10-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-10" type="button" role="tab" aria-controls="v-pills-tab-10" aria-selected="false">Shadow And Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-11-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-11" type="button" role="tab" aria-controls="v-pills-tab-11" aria-selected="false">Tint And Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-12-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-12" type="button" role="tab" aria-controls="v-pills-tab-12" aria-selected="false">Toning</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-13-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-13" type="button" role="tab" aria-controls="v-pills-tab-13" aria-selected="false">Transparency On Selection</button>
+                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-14-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-14" type="button" role="tab" aria-controls="v-pills-tab-14" aria-selected="false">Water Color Effect</button>
                   </div>
                 </div>
 
@@ -618,151 +622,151 @@ const AlbumSense = () => {
           </section>
 
 
-          
 
-            {/* <!-- you may also like start --> */}
-            <div className="featured-collection-section mt-100 home-section">
-                <div className="container">
-                    <div className="section-header">
-                        <h2 className="section-heading">You may also like</h2>
+
+          {/* <!-- you may also like start --> */}
+          <div className="featured-collection-section mt-100 home-section">
+            <div className="container">
+              <div className="section-header">
+                <h2 className="section-heading">You may also like</h2>
+              </div>
+
+              <div className="row justify-content-center">
+
+                <div className="col-lg-4 col-md-6 col-12">
+                  <div className="product-card shadow-sm">
+                    <div className="product-card-img text-center">
+                      <Link className="hover-switch" href="#">
+                        <img className="primary-img product-img"
+                          src="assets/img/products/edit-zone-gold-projects.png" alt="product-img" />
+                      </Link>
+
+                      <div className="product-card-action product-card-action-2">
+                        <Link to="#quickview-modal" className="quickview-btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-product-id="Gold-Projects-Edit-Zone"
+                          data-product-name="Gold Projects Edit Zone"
+                          data-product-price="1529.00"
+                          data-product-compare-price="1759.00"
+                          data-product-images='["as-1.png","as-2.jpg","as-3.jpg","as-4.jpg","as-5.jpg","as-6.jpg","as-7.png","as-8.jpg"]'
+                          data-product-rating="4"
+                          data-product-rating-count="22">
+                          QUICKVIEW
+                        </Link>
+                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
+                      </div>
+
+                      <Link to="/wishlist" className="wishlist-btn card-wishlist">
+                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
+                          fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
+                            fill="black" />
+                        </svg>
+                      </Link>
                     </div>
-
-                    <div className="row justify-content-center">
-
-                        <div className="col-lg-4 col-md-6 col-12">
-                            <div className="product-card shadow-sm">
-                                <div className="product-card-img text-center">
-                                    <Link className="hover-switch" href="#">
-                                        <img className="primary-img product-img"
-                                            src="assets/img/products/edit-zone-gold-projects.png" alt="product-img"/>
-                                    </Link>
-
-                                    <div className="product-card-action product-card-action-2">
-                                        <Link to="#quickview-modal" className="quickview-btn btn-primary" 
-                                        data-bs-toggle="modal"
-                                        data-product-id="Gold-Projects-Edit-Zone"
-                                        data-product-name="Gold Projects Edit Zone"
-                                        data-product-price="1529.00"
-                                        data-product-compare-price="1759.00"
-                                        data-product-images='["as-1.png","as-2.jpg","as-3.jpg","as-4.jpg","as-5.jpg","as-6.jpg","as-7.png","as-8.jpg"]'
-                                        data-product-rating="4"
-                                        data-product-rating-count="22">
-                                        QUICKVIEW
-                                     </Link>
-                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
-                                    </div>
-
-                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
-                                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
-                                                fill="black" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                                <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="#" style={{textDecoration:"none"}}>Gold Projects Edit Zone</Link>
-                                    </h3>
-                                    <div className="product-card-price">
-                                        <span className="card-price-regular">₹1529</span>
-                                        <span className="card-price-compare text-decoration-line-through">₹1759</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-12">
-                            <div className="product-card shadow-sm">
-                                <div className="product-card-img text-center">
-                                    <Link className="hover-switch" href="#">
-                                        <img className="primary-img product-img"
-                                            src="assets/img/products/grass-valley-edius-11.png" alt="product-img"/>
-                                    </Link>
-
-                                    <div className="product-card-action product-card-action-2">
-                                        <Link to="#quickview-modal" className="quickview-btn btn-primary" 
-                                            data-bs-toggle="modal"
-                                            data-product-id="Edius-11"
-                                            data-product-name="Edius 11"
-                                            data-product-price="1000.00"
-                                            data-product-compare-price="1500.00"
-                                            data-product-images='["edius-1.jpg","edius-2.jpg","edius-3.jpg","edius-4.jpg","edius-5.jpg","edius-6.jpg"]'
-                                            data-product-rating="4"
-                                            data-product-rating-count="22">
-                                            QUICKVIEW
-                                         </Link>
-                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Edius 11')">ADD TO CART</Link>
-                                    </div>
-
-                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
-                                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
-                                                fill="black" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                                <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="#" style={{textDecoration:"none"}}>Edius 11</Link>
-                                    </h3>
-                                    <div className="product-card-price">
-                                        <span className="card-price-regular">₹1000</span>
-                                        <span className="card-price-compare text-decoration-line-through">₹1500</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="col-lg-4 col-md-6 col-12">
-                            <div className="product-card shadow-sm">
-                                <div className="product-card-img text-center">
-                                    <Link className="hover-switch" href="#">
-                                        <img className="primary-img product-img" src="assets/img/products/cut-sense.png"
-                                            alt="product-img"/>
-                                    </Link>
-
-                                    <div className="product-card-action product-card-action-2">
-                                        <Link to="#quickview-modal" className="quickview-btn btn-primary" 
-                                        data-bs-toggle="modal"
-                                        data-product-id="Cut-Sense"
-                                        data-product-name="Cut Sense"
-                                        data-product-price="1529.00"
-                                        data-product-compare-price="1759.00"
-                                        data-product-images='["as-1.png","as-2.jpg","as-3.jpg","as-4.jpg","as-5.jpg","as-6.jpg","as-7.png","as-8.jpg"]'
-                                        data-product-rating="4"
-                                        data-product-rating-count="22">
-                                        QUICKVIEW
-                                     </Link>
-                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Cut Sense')">ADD TO CART</Link>
-                                    </div>
-
-                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
-                                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
-                                            fill="none" xmlns="http://www.w3.org/2000/svg">
-                                            <path
-                                                d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
-                                                fill="black" />
-                                        </svg>
-                                    </Link>
-                                </div>
-                                <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="/" style={{textDecoration:"none"}}>Cut Sense</Link>
-                                    </h3>
-                                    <div className="product-card-price">
-                                        <span className="card-price-regular">₹1529</span>
-                                        <span className="card-price-compare text-decoration-line-through">₹1759</span>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                    <div className="product-card-details text-center pb-3">
+                      <h3 className="product-card-title"><Link to="#" style={{ textDecoration: "none" }}>Gold Projects Edit Zone</Link>
+                      </h3>
+                      <div className="product-card-price">
+                        <span className="card-price-regular">₹1529</span>
+                        <span className="card-price-compare text-decoration-line-through">₹1759</span>
+                      </div>
                     </div>
-
+                  </div>
                 </div>
+
+                <div className="col-lg-4 col-md-6 col-12">
+                  <div className="product-card shadow-sm">
+                    <div className="product-card-img text-center">
+                      <Link className="hover-switch" href="#">
+                        <img className="primary-img product-img"
+                          src="assets/img/products/grass-valley-edius-11.png" alt="product-img" />
+                      </Link>
+
+                      <div className="product-card-action product-card-action-2">
+                        <Link to="#quickview-modal" className="quickview-btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-product-id="Edius-11"
+                          data-product-name="Edius 11"
+                          data-product-price="1000.00"
+                          data-product-compare-price="1500.00"
+                          data-product-images='["edius-1.jpg","edius-2.jpg","edius-3.jpg","edius-4.jpg","edius-5.jpg","edius-6.jpg"]'
+                          data-product-rating="4"
+                          data-product-rating-count="22">
+                          QUICKVIEW
+                        </Link>
+                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Edius 11')">ADD TO CART</Link>
+                      </div>
+
+                      <Link to="/wishlist" className="wishlist-btn card-wishlist">
+                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
+                          fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
+                            fill="black" />
+                        </svg>
+                      </Link>
+                    </div>
+                    <div className="product-card-details text-center pb-3">
+                      <h3 className="product-card-title"><Link to="#" style={{ textDecoration: "none" }}>Edius 11</Link>
+                      </h3>
+                      <div className="product-card-price">
+                        <span className="card-price-regular">₹1000</span>
+                        <span className="card-price-compare text-decoration-line-through">₹1500</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <div className="col-lg-4 col-md-6 col-12">
+                  <div className="product-card shadow-sm">
+                    <div className="product-card-img text-center">
+                      <Link className="hover-switch" href="#">
+                        <img className="primary-img product-img" src="assets/img/products/cut-sense.png"
+                          alt="product-img" />
+                      </Link>
+
+                      <div className="product-card-action product-card-action-2">
+                        <Link to="#quickview-modal" className="quickview-btn btn-primary"
+                          data-bs-toggle="modal"
+                          data-product-id="Cut-Sense"
+                          data-product-name="Cut Sense"
+                          data-product-price="1529.00"
+                          data-product-compare-price="1759.00"
+                          data-product-images='["as-1.png","as-2.jpg","as-3.jpg","as-4.jpg","as-5.jpg","as-6.jpg","as-7.png","as-8.jpg"]'
+                          data-product-rating="4"
+                          data-product-rating-count="22">
+                          QUICKVIEW
+                        </Link>
+                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Cut Sense')">ADD TO CART</Link>
+                      </div>
+
+                      <Link to="/wishlist" className="wishlist-btn card-wishlist">
+                        <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
+                          fill="none" xmlns="http://www.w3.org/2000/svg">
+                          <path
+                            d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
+                            fill="black" />
+                        </svg>
+                      </Link>
+                    </div>
+                    <div className="product-card-details text-center pb-3">
+                      <h3 className="product-card-title"><Link to="/" style={{ textDecoration: "none" }}>Cut Sense</Link>
+                      </h3>
+                      <div className="product-card-price">
+                        <span className="card-price-regular">₹1529</span>
+                        <span className="card-price-compare text-decoration-line-through">₹1759</span>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+              </div>
+
             </div>
-            {/* <!-- you may also lik end --> */}
+          </div>
+          {/* <!-- you may also lik end --> */}
         </main>
         <Footer />
         <ScrollUpButton />
