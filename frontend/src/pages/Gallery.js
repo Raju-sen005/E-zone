@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useState } from 'react';
 import AnnouncementBar from '../components/AnnouncementBar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -6,72 +6,58 @@ import ScrollUpButton from '../components/ScrollUpButton';
 import DrawerMenu from '../components/DrawerMenu';
 import DrawerCart from '../components/DrawerCart';
 import ProductQuickviewModal from '../components/ProductQuickView';
-import { Fancybox } from '@fancyapps/ui';
-// import '@fancyapps/ui/dist/fancybox.css';
 import { Link } from 'react-router-dom';
 
 const Gallery = () => {
-  useEffect(() => {
-    // Initialize Fancybox
-    Fancybox.bind('[data-fancybox]', {
-      Toolbar: {
-        display: ['zoom', 'slideshow', 'fullscreen', 'download', 'thumbs', 'close'],
-      },
-      Thumbs: { autoStart: false },
-      Navigation: true,
-    });
+  const [activeGallery, setActiveGallery] = useState(null);
 
-    // Handle custom popups (optional feature)
-    const boxes = document.querySelectorAll('.gallery-box');
-    const popups = document.querySelectorAll('.popup');
-
-    boxes.forEach((box, index) => {
-      box.addEventListener('click', () => {
-        popups[index].classList.add('active');
-      });
-    });
-
-    popups.forEach((popup) => {
-      const closeBtn = popup.querySelector('.popup-close');
-
-      if (closeBtn) {
-        closeBtn.addEventListener('click', () => {
-          popup.classList.remove('active');
-        });
-      }
-
-      popup.addEventListener('click', (e) => {
-        if (e.target === popup) {
-          popup.classList.remove('active');
-        }
-      });
-    });
-
-    const handleEscape = (e) => {
-      if (e.key === 'Escape') {
-        popups.forEach((popup) => popup.classList.remove('active'));
-      }
-    };
-
-    document.addEventListener('keydown', handleEscape);
-
-    return () => {
-      document.removeEventListener('keydown', handleEscape);
-    };
-  }, []);
+  const galleries = {
+    1: {
+      title: 'Edit Zone Classes',
+      images: [
+        'assets/img/products/1.jpg',
+        'assets/img/products/2.jpg',
+        'assets/img/products/3.jpg',
+      ],
+    },
+    2: {
+      title: 'Edit Zone',
+      images: [
+        'assets/img/gallery/1.jpg',
+        'assets/img/gallery/2.jpg',
+        'assets/img/gallery/3.jpg',
+        'assets/img/gallery/4.jpg',
+        'assets/img/gallery/5.jpg',
+        'assets/img/gallery/6.jpg',
+      ],
+    },
+    3: {
+      title: 'Edit Zone Gold Projects',
+      images: [
+        'assets/img/gallery/7.jpg',
+        'assets/img/gallery/8.jpg',
+        'assets/img/gallery/9.jpg',
+        'assets/img/gallery/10.jpg',
+        'assets/img/gallery/11.jpg',
+        'assets/img/gallery/12.jpg',
+        'assets/img/gallery/13.jpg',
+      ],
+    },
+  };
 
   return (
     <div className="body-wrapper">
       <AnnouncementBar />
       <Header />
+
       <main id="MainContent" className="content-for-layout">
         {/* Breadcrumb */}
         <div className="breadcrumb">
           <div className="container">
             <ul className="list-unstyled d-flex align-items-center m-0">
-              <li><Link to="/" style={{textDecoration:"none"}}>Home</Link></li>
+              <li><Link to="/" style={{ textDecoration: 'none' }}>Home</Link></li>
               <li>
-                <svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none">
                   <g opacity="0.4">
                     <path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000" />
                   </g>
@@ -82,122 +68,110 @@ const Gallery = () => {
           </div>
         </div>
 
-      <section className="pt-5 mt-2">
-            <div className="container">
-                <div className="row">
-                    <div className="col-md-4 mb-3">
-                        <div className="gallery-box">
-                            <div className="front-image">
-                                <img src="assets/img/products/1.jpg" alt="Edit Zone Classes"/>
-                            </div>
-                            <div className="box-title">Edit Zone Classes</div>
-                        </div>
-                        <div className="popup">
-                            <div className="popup-content">
-                                <div className="popup-close">×</div>
-                                <div className="inner-images">
-                                    <a data-fancybox="gallery-1" href="assets/img/products/1.jpg">
-                                        <img src="assets/img/products/1.jpg" alt="Product 1"/>
-                                    </a>
-                                    <a data-fancybox="gallery-1" href="assets/img/products/2.jpg">
-                                        <img src="assets/img/products/2.jpg" alt="Product 2"/>
-                                    </a>
-                                    <a data-fancybox="gallery-1" href="assets/img/products/3.jpg">
-                                        <img src="assets/img/products/3.jpg" alt="Product 3"/>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
+        {/* Gallery Grid */}
+        <section className="pt-5 mt-2">
+          <div className="container">
+            <div className="row">
+              {Object.entries(galleries).map(([key, gallery]) => (
+                <div className="col-md-4 mb-3" key={key}>
+                  <div
+                    className="gallery-box"
+                    onClick={() => setActiveGallery(key)}
+                    data-bs-toggle="modal"
+                    data-bs-target="#imageModal"
+                  >
+                    <div className="front-image">
+                      <img src={gallery.images[0]} alt={gallery.title} className="img-fluid rounded" style={{ width: "100%", height: "267px", objectFit: "cover" }} />
+                      <div className="box-title">{gallery.title}</div>
                     </div>
-    
-                    <div className="col-md-4 mb-3">
-                        <div className="gallery-box">
-                            <div className="front-image">
-                                <img src="assets/img/gallery/1.jpg" alt="Beach Collection"/>
-                            </div>
-                            <div className="box-title">Edit Zone</div>
-                        </div>
-                        <div className="popup">
-                            <div className="popup-content">
-                                <div className="popup-close">×</div>
-                                <div className="inner-images">
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/1.jpg">
-                                        <img src="assets/img/gallery/1.jpg" alt="Castle"/>
-                                    </a>
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/2.jpg">
-                                        <img src="assets/img/gallery/2.jpg" alt="Sample"/>
-                                    </a>
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/3.jpg">
-                                        <img src="assets/img/gallery/3.jpg" alt="Lady"/>
-                                    </a>
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/4.jpg">
-                                        <img src="assets/img/gallery/4.jpg" alt="Coffee"/>
-                                    </a>
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/5.jpg">
-                                        <img src="assets/img/gallery/5.jpg" alt="Dog"/>
-                                    </a>
-
-                                    <a data-fancybox="gallery-2" href="assets/img/gallery/5.jpg">
-                                        <img src="assets/img/gallery/6.jpg" alt="Dog"/>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div className="col-md-4 mb-3">
-                        <div className="gallery-box">
-                            <div className="front-image">
-                                <img src="assets/img/gallery/7.jpg" alt="Beach Collection"/>
-                            </div>
-                            <div className="box-title">Edit zone gold projects</div>
-                        </div>
-                        <div className="popup">
-                            <div className="popup-content">
-                                <div className="popup-close">×</div>
-                                <div className="inner-images">
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/7.jpg">
-                                        <img src="assets/img/gallery/7.jpg" alt="Castle"/>
-                                    </a>
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/8.jpg">
-                                        <img src="assets/img/gallery/8.jpg" alt="Sample"/>
-                                    </a>
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/9.jpg">
-                                        <img src="assets/img/gallery/9.jpg" alt="Lady"/>
-                                    </a>
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/10.jpg">
-                                        <img src="assets/img/gallery/10.jpg" alt="Coffee"/>
-                                    </a>
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/11.jpg">
-                                        <img src="assets/img/gallery/11.jpg" alt="Dog"/>
-                                    </a>
-
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/12.jpg">
-                                        <img src="assets/img/gallery/12.jpg" alt="Dog"/>
-                                    </a>
-
-
-                                    <a data-fancybox="gallery-3" href="assets/img/gallery/13.jpg">
-                                        <img src="assets/img/gallery/13.jpg" alt="Dog"/>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-
+                  </div>
                 </div>
+              ))}
             </div>
+          </div>
         </section>
-
       </main>
 
-      {/* Footer and Other Components */}
+      {/* Bootstrap Modal (auto-resize) */}
+      <div
+        className="modal fade"
+        id="imageModal"
+        tabIndex="-1"
+        aria-labelledby="imageModalLabel"
+        aria-hidden="true"
+      >
+        <div className="modal-dialog modal-dialog-centered modal-lg">
+          <div className="modal-content p-3">
+            <button
+              type="button"
+              className="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+              onClick={() => setActiveGallery(null)}
+              style={{
+                position: "absolute",
+                top: "10px",
+                right: "10px",
+                fontSize: "1em",
+                color: "#333",
+                cursor: "pointer",
+                userSelect: "none",
+                padding: "5px"
+              }}
+            ></button>
+            <div className="modal-body">
+              <div className="row">
+                {galleries[activeGallery]?.images.map((img, idx) => (
+                  <div className="col-md-4 mb-3" key={idx}>
+                    <img
+                      src={img}
+                      alt={`gallery-${idx}`}
+                      className="img-fluid rounded shadow-sm"
+                      style={{ maxHeight: "300px", objectFit: "cover" }}
+                    />
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer & Extras */}
       <Footer />
       <ScrollUpButton />
       <DrawerMenu />
       <DrawerCart />
       <ProductQuickviewModal />
+
+      {/* Custom Styles */}
+      <style>{`
+        .gallery-box {
+          position: relative;
+          cursor: pointer;
+          overflow: hidden;
+          border-radius: 12px;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+          transition: transform 0.3s ease;
+        }
+        .gallery-box:hover {
+          transform: scale(1.03);
+        }
+        .gallery-box .box-title {
+          position: absolute;
+          bottom: 0;
+          width: 100%;
+          text-align: center;
+          background: rgba(0,0,0,0.6);
+          color: #fff;
+          padding: 10px;
+          opacity: 0;
+          transition: opacity 0.3s ease-in-out;
+        }
+        .gallery-box:hover .box-title {
+          opacity: 1;
+        }
+      `}</style>
     </div>
   );
 };

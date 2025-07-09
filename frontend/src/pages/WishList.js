@@ -238,6 +238,21 @@ const WishList = () => {
         <DrawerCart />
         <ProductQuickviewModal />
     </div>
+    {/* ✅ Bootstrap Quickview Modal */}
+    <div className="modal fade" id="quickview-modal" tabIndex="-1" aria-hidden="true">
+                <div className="modal-dialog modal-lg modal-dialog-centered">
+                    <div className="modal-content">
+                        <div className="modal-header">
+                            <h5 className="modal-title">Quick View</h5>
+                            <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div className="modal-body">
+                            {/* You can dynamically populate modal content here using state */}
+                            <p>This is a sample modal content.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
     </>
   )
 }

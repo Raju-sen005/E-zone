@@ -13,26 +13,26 @@ const Footer = () => {
                 {
                   title: 'About',
                   links: [
-                    { label: 'About us', href: 'about-us.html' },
-                    { label: 'Training Classes', href: 'video-editing.html' },
-                    { label: 'Exhibitions', href: 'video-editing.html' },
-                    { label: 'Blog', href: 'blog.html' }
+                    { label: 'About us', to: '/about-us' },
+                    { label: 'Training Classes', to: '/video-editing' },
+                    { label: 'Exhibitions', to: '/video-editing' },
+                    { label: 'Blog', to: '/blog' }
                   ]
                 },
                 {
                   title: 'Product',
                   links: [
-                    { label: 'Edius 11', href: 'edius11.html' },
-                    { label: 'Album Sense', href: 'album-sense.html' },
-                    { label: 'Cut Sense', href: 'cut-sense.html' }
+                    { label: 'Edius 11', to: '/edius11' },
+                    { label: 'Album Sense', to: '/album-sense' },
+                    { label: 'Cut Sense', to: '/cut-sense' }
                   ]
                 },
                 {
                   title: 'Help',
                   links: [
-                    { label: 'FAQ', href: 'faq.html' },
-                    { label: 'Contact', href: 'contact.html' },
-                    { label: 'Download', href: 'download.html' }
+                    { label: 'FAQ', to: '/faq' },
+                    { label: 'Contact', to: '/contact' },
+                    { label: 'Download', to: '/downloads' }
                   ]
                 }
               ].map((section, idx) => (
@@ -51,7 +51,7 @@ const Footer = () => {
                     <ul className="footer-menu list-unstyled mb-0 d-md-block">
                       {section.links.map((link, i) => (
                         <li className="footer-menu-item" key={i}>
-                          <Link to={link.href}>{link.label}</Link>
+                          <Link to={link.to}>{link.label}</Link>
                         </li>
                       ))}
                     </ul>
@@ -97,8 +97,8 @@ const Footer = () => {
         <div className="container">
           <div className="footer-bottom-inner d-flex flex-wrap justify-content-md-between justify-content-center align-items-center">
             <ul className="footer-bottom-menu list-unstyled d-flex flex-wrap align-items-center mb-0">
-              <li className="footer-menu-item"><Link to="privacy-policy.html">Privacy policy</Link></li>
-              <li className="footer-menu-item"><Link to="terms-condition.html">Terms & Conditions</Link></li>
+              <li className="footer-menu-item"><Link to="/privacy-policy">Privacy policy</Link></li>
+              <li className="footer-menu-item"><Link to="/terms-condition">Terms & Conditions</Link></li>
             </ul>
             <p className="copyright footer-text">©<span className="current-year">{new Date().getFullYear()}</span> Edit Zone.</p>
           </div>

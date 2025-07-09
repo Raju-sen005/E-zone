@@ -398,7 +398,7 @@ const AlbumSense = () => {
               <div className="row">
 
                 <div className="col-md-4">
-                  <div className="nav flex-column nav-pills me-3" id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <div className="nav flex-column nav-pills me-3 text-black" id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button className="nav-link active mb-3" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">Auto correct</button>
                     <button className="nav-link mb-3" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hue Saturation</button>
                     <button className="nav-link mb-3" id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Blending Mode</button>
@@ -649,10 +649,10 @@ const AlbumSense = () => {
                                         data-product-rating-count="22">
                                         QUICKVIEW
                                      </Link>
-                                        <Link to="cart.html" className="addtocart-btn btn-primary" onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
+                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
                                     </div>
 
-                                    <Link to="wishlist.html" className="wishlist-btn card-wishlist">
+                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
                                         <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -662,7 +662,7 @@ const AlbumSense = () => {
                                     </Link>
                                 </div>
                                 <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="#">Gold Projects Edit Zone</Link>
+                                    <h3 className="product-card-title"><Link to="#" style={{textDecoration:"none"}}>Gold Projects Edit Zone</Link>
                                     </h3>
                                     <div className="product-card-price">
                                         <span className="card-price-regular">₹1529</span>
@@ -692,10 +692,10 @@ const AlbumSense = () => {
                                             data-product-rating-count="22">
                                             QUICKVIEW
                                          </Link>
-                                        <Link to="cart.html" className="addtocart-btn btn-primary" onclick="addToCart('Edius 11')">ADD TO CART</Link>
+                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Edius 11')">ADD TO CART</Link>
                                     </div>
 
-                                    <Link to="wishlist.html" className="wishlist-btn card-wishlist">
+                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
                                         <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -705,7 +705,7 @@ const AlbumSense = () => {
                                     </Link>
                                 </div>
                                 <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="#">Edius 11</Link>
+                                    <h3 className="product-card-title"><Link to="#" style={{textDecoration:"none"}}>Edius 11</Link>
                                     </h3>
                                     <div className="product-card-price">
                                         <span className="card-price-regular">₹1000</span>
@@ -735,10 +735,10 @@ const AlbumSense = () => {
                                         data-product-rating-count="22">
                                         QUICKVIEW
                                      </Link>
-                                        <Link to="cart.html" className="addtocart-btn btn-primary" onclick="addToCart('Cut Sense')">ADD TO CART</Link>
+                                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Cut Sense')">ADD TO CART</Link>
                                     </div>
 
-                                    <Link to="wishlist.html" className="wishlist-btn card-wishlist">
+                                    <Link to="/wishlist" className="wishlist-btn card-wishlist">
                                         <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
                                             fill="none" xmlns="http://www.w3.org/2000/svg">
                                             <path
@@ -748,7 +748,7 @@ const AlbumSense = () => {
                                     </Link>
                                 </div>
                                 <div className="product-card-details text-center pb-3">
-                                    <h3 className="product-card-title"><Link to="/">Cut Sense</Link>
+                                    <h3 className="product-card-title"><Link to="/" style={{textDecoration:"none"}}>Cut Sense</Link>
                                     </h3>
                                     <div className="product-card-price">
                                         <span className="card-price-regular">₹1529</span>

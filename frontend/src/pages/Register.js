@@ -1,3 +1,4 @@
+// Register.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnnouncementBar from '../components/AnnouncementBar';
@@ -26,79 +27,55 @@ const Register = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-
+  
     const { firstName, lastName, email, password } = formData;
-
-    if (!firstName.trim()) {
-      alert("First name is required");
-      return;
-    }
-    if (!lastName.trim()) {
-      alert("Last name is required");
-      return;
-    }
-
+  
+    // validation
+    if (!firstName.trim()) return alert("First name is required");
+    if (!lastName.trim()) return alert("Last name is required");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-    if (!emailRegex.test(email)) {
-      alert("Please enter a valid email address");
-      return;
-    }
-
-    if (password.length < 6) {
-      alert("Password must be at least 6 characters");
-      return;
-    }
-
+    if (!emailRegex.test(email)) return alert("Please enter a valid email");
+    if (password.length < 6) return alert("Password must be at least 6 characters");
+  
     try {
-      const res = await fetch("https://editzone.onrender.com/api/auth/signup", {
+      const res = await fetch(`${process.env.REACT_APP_BASE_URL}/api/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json"
         },
         body: JSON.stringify({ firstName, lastName, email, password })
       });
-
+  
       const data = await res.json();
-
+  
       if (res.ok) {
-        alert("Account Created Successfully");
-        navigate("/login"); // Redirect to login page
+        alert("Registration successful!");
+        navigate("/login"); // redirect to login
       } else {
-        alert("Signup Failed: " + data.message);
+        alert(data.message || "Something went wrong");
       }
-    } catch (err) {
-      console.error("Signup error:", err);
-      alert("Something went wrong");
+    } catch (error) {
+      console.error("Register Error:", error);
+      alert("Failed to connect to server");
     }
   };
-
+  
   return (
     <>
       <div className="body-wrapper">
         <AnnouncementBar />
         <Header />
 
-        {/* Breadcrumb */}
         <div className="breadcrumb">
           <div className="container">
             <ul className="list-unstyled d-flex align-items-center m-0">
-              <li><Link to="/">Home</Link></li>
-              <li>
-                <svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none">
-                  <g opacity="0.4">
-                    <path
-                      d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z"
-                      fill="#000"
-                    />
-                  </g>
-                </svg>
-              </li>
+              <li><Link to="/" style={{textDecoration:"none"}}>Home</Link></li>
+              <li><svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64"><g opacity="0.4"><path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000" /></g></svg></li>
               <li>Register</li>
             </ul>
           </div>
         </div>
 
-        {/* Register Form */}
         <main id="MainContent" className="content-for-layout">
           <div className="login-page mt-100">
             <div className="container">
@@ -107,54 +84,20 @@ const Register = () => {
                   <h2 className="section-heading text-center">Register</h2>
                 </div>
                 <div className="row">
-                  <div className="col-12">
-                    <fieldset>
-                      <label className="label">First name</label>
-                      <input
-                        type="text"
-                        name="firstName"
-                        value={formData.firstName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </fieldset>
-                  </div>
-                  <div className="col-12">
-                    <fieldset>
-                      <label className="label">Last name</label>
-                      <input
-                        type="text"
-                        name="lastName"
-                        value={formData.lastName}
-                        onChange={handleChange}
-                        required
-                      />
-                    </fieldset>
-                  </div>
-                  <div className="col-12">
-                    <fieldset>
-                      <label className="label">Email address</label>
-                      <input
-                        type="email"
-                        name="email"
-                        value={formData.email}
-                        onChange={handleChange}
-                        required
-                      />
-                    </fieldset>
-                  </div>
-                  <div className="col-12">
-                    <fieldset>
-                      <label className="label">Password</label>
-                      <input
-                        type="password"
-                        name="password"
-                        value={formData.password}
-                        onChange={handleChange}
-                        required
-                      />
-                    </fieldset>
-                  </div>
+                  {['firstName', 'lastName', 'email', 'password'].map(field => (
+                    <div className="col-12" key={field}>
+                      <fieldset>
+                        <label className="label">{field === 'firstName' ? 'First Name' : field === 'lastName' ? 'Last Name' : field.charAt(0).toUpperCase() + field.slice(1)}</label>
+                        <input
+                          type={field === 'password' ? 'password' : field === 'email' ? 'email' : 'text'}
+                          name={field}
+                          value={formData[field]}
+                          onChange={handleChange}
+                          required
+                        />
+                      </fieldset>
+                    </div>
+                  ))}
                   <div className="col-12 mt-3">
                     <button type="submit" className="btn-primary d-block mt-3 btn-signin">CREATE</button>
                   </div>

@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Modal } from 'react-bootstrap';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { Link } from 'react-router-dom';
 
 const VideoSection = () => {
   const [show, setShow] = useState(false);
@@ -14,7 +13,7 @@ const VideoSection = () => {
 
   const handleClose = () => {
     setShow(false);
-    setVideoSrc(''); // Clearing src stops playback when modal closes
+    setVideoSrc('');
   };
 
   return (
@@ -29,16 +28,20 @@ const VideoSection = () => {
           <div className="row">
             <div className="col-12">
               <div className="video-tools d-flex align-items-center justify-content-center">
-                <div class="video-button-area">
-                                        <Link className="video-button" to="#video-modal" data-bs-toggle="modal">
-                                            <svg width="22" height="26" viewBox="0 0 22 26" fill="none"
-                                                xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M21.5 12.134C22.1667 12.5189 22.1667 13.4811 21.5 13.866L2 25.1244C1.33333 25.5093 0.499999 25.0281 0.499999 24.2583L0.5 1.74167C0.5 0.971867 1.33333 0.490743 2 0.875643L21.5 12.134Z"
-                                                    fill="#FEFEFE" />
-                                            </svg>
-                                        </Link>
-                                    </div>
+                <div className="video-button-area">
+                  <button
+                    className="video-button border-0 bg-transparent"
+                    onClick={handleOpen}
+                    style={{ cursor: 'pointer' }}
+                  >
+                    <svg width="22" height="26" viewBox="0 0 22 26" fill="none"
+                      xmlns="http://www.w3.org/2000/svg">
+                      <path
+                        d="M21.5 12.134C22.1667 12.5189 22.1667 13.4811 21.5 13.866L2 25.1244C1.33333 25.5093 0.499999 25.0281 0.499999 24.2583L0.5 1.74167C0.5 0.971867 1.33333 0.490743 2 0.875643L21.5 12.134Z"
+                        fill="#FEFEFE" />
+                    </svg>
+                  </button>
+                </div>
               </div>
             </div>
           </div>

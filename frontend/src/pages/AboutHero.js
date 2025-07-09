@@ -21,7 +21,7 @@ const AboutHero = () => {
                   <div className="action-count">01</div>
                   <div className="action-content">
                     <h4 className="action-title">
-                      <Link to="/">Get A Quote</Link>
+                      <Link to="/" style={{textDecoration:"none"}}>Get A Quote</Link>
                     </h4>
                     <p className="action-subtitle">
                       Through True Rich Attended does no end it his mother since real had half every.
@@ -33,7 +33,7 @@ const AboutHero = () => {
                   <div className="action-count">02</div>
                   <div className="action-content">
                     <h4 className="action-title">
-                      <Link to="/">Book An Appointment</Link>
+                      <Link to="/" style={{textDecoration:"none"}}>Book An Appointment</Link>
                     </h4>
                     <p className="action-subtitle">
                       Through True Rich Attended does no end it his mother since real.
@@ -45,7 +45,7 @@ const AboutHero = () => {
                   <div className="action-count">03</div>
                   <div className="action-content">
                     <h4 className="action-title">
-                      <Link to="/">Get Your Service Done</Link>
+                      <Link to="/" style={{textDecoration:"none"}}>Get Your Service Done</Link>
                     </h4>
                     <p className="action-subtitle">
                       Ecstatic unsatiable saw his giving Remain expense you position concluded.

@@ -1,3 +1,4 @@
+// Login.jsx
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import AnnouncementBar from '../components/AnnouncementBar';
@@ -6,47 +7,39 @@ import Footer from '../components/Footer';
 import ScrollUpButton from '../components/ScrollUpButton';
 import DrawerMenu from '../components/DrawerMenu';
 import DrawerCart from '../components/DrawerCart';
-import { Link } from 'react-router-dom'; // 
+import { Link } from 'react-router-dom';
 
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const navigate = useNavigate(); // from react-router-dom
+  const navigate = useNavigate();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
 
+    if (!email || !password) return alert("All fields are required");
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-
-    if (!email) {
-      return alert('Email is required');
-    }
-    if (!emailRegex.test(email)) {
-      return alert('Please enter a valid email address');
-    }
-    if (!password) {
-      return alert('Password is required');
-    }
+    if (!emailRegex.test(email)) return alert("Invalid email");
 
     try {
-      const res = await fetch("https://editzone.onrender.com/api/auth/login", {
+      const res = await fetch("http://localhost:5000/api/auth/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ email, password }),
+        body: JSON.stringify({ email, password })
       });
 
       const data = await res.json();
 
       if (res.ok) {
-        localStorage.setItem("userData", JSON.stringify(data?.user || {}));
-        alert("Login successful");
-        navigate("/"); // or use window.location.href = '/'
+        localStorage.setItem("token", data.token);
+        alert("Login successful!");
+        navigate("/");
       } else {
         alert(data.message || "Login failed");
       }
     } catch (err) {
-      console.error("Login error:", err);
-      alert("Something went wrong!");
+      console.error(err);
+      alert("Something went wrong");
     }
   };
 
@@ -56,24 +49,16 @@ const Login = () => {
         <AnnouncementBar />
         <Header />
 
-        {/* Breadcrumb */}
         <div className="breadcrumb">
           <div className="container">
             <ul className="list-unstyled d-flex align-items-center m-0">
-              <li><Link to="/" style={{ textDecoration: "none" }}>Home</Link></li>
-              <li>
-                <svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64">
-                  <g opacity="0.4">
-                    <path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000" />
-                  </g>
-                </svg>
-              </li>
+              <li><Link to="/" style={{textDecoration:"none"}}>Home</Link></li>
+              <li><svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64"><g opacity="0.4"><path d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z" fill="#000" /></g></svg></li>
               <li>Login</li>
             </ul>
           </div>
         </div>
 
-        {/* Login Form */}
         <main id="MainContent" className="content-for-layout">
           <div className="login-page mt-100">
             <div className="container">

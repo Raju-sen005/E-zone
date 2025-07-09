@@ -14,7 +14,12 @@ import Contact from './pages/Contact';
 import Cart from './pages/Cart';
 import ProductQuickviewModal from './components/ProductQuickView';
 import WishList from './pages/WishList';
-
+import AboutUs from './pages/AboutUs'
+import Faq from './pages/Faq'
+import TermsCondition from './pages/TermsCondition'
+import PrivacyPolicy from './pages/PrivacyPolicy'
+import Register from './pages/Register'
+import CheckOut from './pages/CheckOut'
 function App() {
   return (
       <Routes>
@@ -31,6 +36,12 @@ function App() {
         <Route path='/cart' element={<Cart/>}/>
         <Route path='/quickview' element={<ProductQuickviewModal />} />
         <Route path='/wishlist' element={<WishList />} />
+        <Route path='/About-us' element={<AboutUs/>} />
+        <Route path='/faq' element={<Faq/>}/>
+        <Route path='/terms-condition' element={<TermsCondition/>}/>
+        <Route path='/privacy-policy' element={<PrivacyPolicy/>}/>
+        <Route path='/register' element={<Register/>}/>
+        <Route path='/checkout' element={<CheckOut/>}/>
       </Routes>
   );
 }

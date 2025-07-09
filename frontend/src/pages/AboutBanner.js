@@ -10,7 +10,7 @@ const AboutBanner = () => {
             <p className="about-banner-text heading_48">
               Get in touch with us for your service related query
             </p>
-            <Link to="/contact" className="about-banner-btn">
+            <Link to="/contact" className="about-banner-btn" style={{textDecoration:"none"}}>
               CONTACT US
             </Link>
           </div>

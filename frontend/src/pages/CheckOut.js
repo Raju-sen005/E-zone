@@ -68,7 +68,26 @@ const CheckOut = () => {
     <div className="body-wrapper">
       <AnnouncementBar />
       <Header />
-      <Breadcrumb />
+        {/* <!-- breadcrumb start --> */}
+        <div className="breadcrumb">
+                            <div className="container">
+                                <ul className="list-unstyled d-flex align-items-center m-0">
+                                    <li><Link to="/" style={{textDecoration:"none"}}>Home</Link></li>
+                                    <li>
+                                        <svg className="icon icon-breadcrumb" width="64" height="64" viewBox="0 0 64 64" fill="none"
+                                            xmlns="http://www.w3.org/2000/svg">
+                                            <g opacity="0.4">
+                                                <path
+                                                    d="M25.9375 8.5625L23.0625 11.4375L43.625 32L23.0625 52.5625L25.9375 55.4375L47.9375 33.4375L49.3125 32L47.9375 30.5625L25.9375 8.5625Z"
+                                                    fill="#000" />
+                                            </g>
+                                        </svg>
+                                    </li>
+                                    <li>CheckOut</li>
+                                </ul>
+                            </div>
+                        </div>
+                        {/* <!-- breadcrumb end --> */}
       <main id="MainContent" className="content-for-layout">
         <div className="checkout-page mt-100">
           <div className="container">
@@ -80,12 +99,12 @@ const CheckOut = () => {
                   </div>
 
                   <div className="checkout-progress overflow-hidden">
-                    <ol className="checkout-bar px-0">
-                      <li className="progress-step step-done"><Link to="cart.html">Cart</Link></li>
-                      <li className="progress-step step-active"><Link to="checkout.html">Your Details</Link></li>
-                      <li className="progress-step step-todo"><Link to="checkout.html">Shipping</Link></li>
-                      <li className="progress-step step-todo"><Link to="checkout.html">Payment</Link></li>
-                      <li className="progress-step step-todo"><Link to="checkout.html">Review</Link></li>
+                    <ol className="checkout-bar px-0" >
+                      <li className="progress-step step-done"><Link to="/cart" style={{textDecoration:"none"}}>Cart</Link></li>
+                      <li className="progress-step step-active"><Link to="/checkout" style={{textDecoration:"none"}}>Your Details</Link></li>
+                      <li className="progress-step step-todo"><Link to="/checkout" style={{textDecoration:"none"}}>Shipping</Link></li>
+                      <li className="progress-step step-todo"><Link to="/checkout" style={{textDecoration:"none"}}>Payment</Link></li>
+                      <li className="progress-step step-todo"><Link to="/checkout" style={{textDecoration:"none"}}>Review</Link></li>
                     </ol>
                   </div>
 
@@ -119,7 +138,7 @@ const CheckOut = () => {
 
                   <div className="shipping-address-area billing-area">
                     <div className="minicart-btn-area d-flex align-items-center justify-content-between flex-wrap">
-                      <Link to="cart.html" className="checkout-page-btn minicart-btn btn-secondary">BACK TO CART</Link>
+                      <Link to="/cart" className="checkout-page-btn minicart-btn btn-secondary">BACK TO CART</Link>
                       <button
                         className="checkout-page-btn minicart-btn btn-primary"
                         onClick={handleProceedToShipping}
@@ -139,7 +158,7 @@ const CheckOut = () => {
                         <div className="mini-img-wrapper">
                           <img className="mini-img" src={item.image} alt={item.name} />
                         </div>
-                        <div className="product-info">
+                        <div className="product-info" style={{textDecoration:"none"}}>
                           <h2 className="product-title">
                             <Link to={item.link}>{item.name}</Link>
                           </h2>
@@ -169,7 +188,7 @@ const CheckOut = () => {
 
                       <div className="mt-4 checkout-promo-code">
                         <input className="input-promo-code" type="text" placeholder="Promo code" />
-                        <Link to="checkout.html" className="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
+                        <Link to="/checkout" className="btn-apply-code position-relative btn-secondary text-uppercase mt-3">
                           Apply Promo Code
                         </Link>
                       </div>

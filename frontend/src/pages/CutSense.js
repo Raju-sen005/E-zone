@@ -7,6 +7,9 @@ import ScrollUpButton from '../components/ScrollUpButton'
 import DrawerMenu from '../components/DrawerMenu'
 import DrawerCart from '../components/DrawerCart'
 import { Link } from 'react-router-dom'
+import SingleBanner from '../pages/SingleBanner.js'
+import ProductGallery from '../components/ProductGallery.js'
+
 
 const CutSense = () => {
   return (
@@ -34,195 +37,12 @@ const CutSense = () => {
             </div>
         </div>
         {/* <!-- breadcrumb end --> */}
-        {/* <!-- single banner start --> */}
-        <div className="latest-blog-section mt-100 overflow-hidden home-section">
-            <div className="latest-blog-inner">
-                <div className="container">
-                    <div className="article-card-container position-relative">
-                        <div className="common-slider" data-slick='{
-                                "autoplay": true,
-                                "autoplaySpeed": 3000,
-                                "slidesToShow": 1, 
-                                "slidesToScroll": 1,
-                                "dots": false,
-                                "arrows": true,
-                                "responsive": [
-                                  {
-                                    "breakpoint": 1281,
-                                    "settings": {
-                                      "slidesToShow": 1
-                                    }
-                                  },
-                                  {
-                                    "breakpoint": 602,
-                                    "settings": {
-                                      "slidesToShow": 1
-                                    }
-                                  }
-                                ]
-                            }'>
-
-
-                            <div className="article-slick-item">
-
-                                <img src="assets/img/banner/banner-1.jpg" alt=""/>
-
-                            </div>
-
-
-                            <div className="article-slick-item">
-
-                                <img src="assets/img/banner/banner-2.jpg" alt=""/>
-
-                            </div>
-
-                            <div className="article-slick-item">
-
-                                <img src="assets/img/banner/banner-3.jpg" alt=""/>
-
-                            </div>
-
-                            <div className="article-slick-item">
-
-                                <img src="assets/img/banner/banner-4.jpg" alt=""/>
-
-                            </div>
-
-                            <div className="article-slick-item">
-
-                                <img src="assets/img/banner/banner-5.jpg" alt=""/>
-
-                            </div>
-
-                        </div>
-                        <div className="activate-arrows show-arrows-always article-arrows arrows-white"></div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        {/* <!-- single banner end --> */}
-
+<SingleBanner/>
          <main id="MainContent" className="content-for-layout">
             <div className="product-page mt-100">
                 <div className="container">
                     <div className="row">
-                        <div className="col-lg-6 col-md-12 col-12">
-                            <div className="product-gallery product-gallery-vertical d-flex">
-                                <div className="product-img-large">
-                                    <div className="img-large-slider common-slider" data-slick='{
-                                        "slidesToShow": 1, 
-                                        "slidesToScroll": 1,
-                                        "dots": false,
-                                        "arrows": false,
-                                        "asNavFor": ".img-thumb-slider"
-                                    }'>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-1.png" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-1.png" alt="img"/>
-                                            </Link>
-                                        </div>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-2.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-2.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-3.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-3.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-4.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-4.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-5.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-5.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-6.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-6.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-7.png" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-7.png" alt="img"/>
-                                            </Link>
-                                        </div>
-
-                                        <div className="img-large-wrapper">
-                                            <Link href="assets/img/products/as-8.jpg" data-fancybox="gallery">
-                                                <img src="assets/img/products/as-8.jpg" alt="img"/>
-                                            </Link>
-                                        </div>
-
-                                    </div>
-                                </div>
-                                <div className="product-img-thumb">
-                                    <div className="img-thumb-slider common-slider" data-vertical-slider="true" data-slick='{
-                                        "slidesToShow": 5, 
-                                        "slidesToScroll": 1,
-                                        "dots": false,
-                                        "arrows": true,
-                                        "infinite": false,
-                                        "speed": 300,
-                                        "cssEase": "ease",
-                                        "focusOnSelect": true,
-                                        "swipeToSlide": true,
-                                        "asNavFor": ".img-large-slider"
-                                    }'>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-1.png" alt="img"/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-2.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-3.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-4.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-5.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-6.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-7.png" alt="img"/>
-                                            </div>
-                                        </div>
-
-                                        <div>
-                                            <div className="img-thumb-wrapper">
-                                                <img src="assets/img/products/as-8.jpg" alt="img"/>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div
-                                        className="activate-arrows show-arrows-always arrows-white d-none d-lg-flex justify-content-between mt-3">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
+                        <ProductGallery/>
                         <div className="col-lg-6 col-md-12 col-12">
                             <div className="product-details ps-lg-4">
                                 <div className="mb-3"><span className="product-availability">In Stock</span></div>
