@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { decreaseQty, increaseQty } from '../store/slices/commonSlice';
 
 const QuantityAndMessage = () => {
-  const [quantity, setQuantity] = useState(1);
+  const dispatch = useDispatch();
+  const { quantity } = useSelector((state) => state.common);
 
-  const decreaseQty = () => {
-    if (quantity > 0) setQuantity(prev => prev - 1);
+  const decreaseQuantity = () => {
+    dispatch(decreaseQty());
   };
 
-  const increaseQty = () => {
-    setQuantity(prev => prev + 1);
+  const increaseQuantity = () => {
+    dispatch(increaseQty());
   };
 
   return (
     <div className="misc d-flex align-items-end justify-content-between mt-4">
       {/* Quantity Selector */}
       <div className="quantity d-flex align-items-center justify-content-between">
-        <button className="qty-btn dec-qty" onClick={decreaseQty}>
+        <button className="qty-btn dec-qty" onClick={decreaseQuantity}>
           <img src="assets/img/icon/minus.svg" alt="minus" />
         </button>
         <input
@@ -26,7 +29,7 @@ const QuantityAndMessage = () => {
           min="0"
           readOnly
         />
-        <button className="qty-btn inc-qty" onClick={increaseQty}>
+        <button className="qty-btn inc-qty" onClick={increaseQuantity}>
           <img src="assets/img/icon/plus.svg" alt="plus" />
         </button>
       </div>

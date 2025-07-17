@@ -1,27 +1,22 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Slider from 'react-slick';
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
-import { Link } from 'react-router-dom';
 
+// Custom Arrow Components
 const NextArrow = ({ onClick }) => (
-  <div
-    className="custom-arrow next-arrow"
-    style={{
-      position: 'absolute',
-      top: '50%',
-      right: '-20px',
-      transform: 'translateY(-50%)',
-      zIndex: 1,
-    }}
-    onClick={onClick}
-  >
+  <div className="custom-arrow next-arrow" style={{
+    position: 'absolute', top: '50%', right: '-20px',
+    transform: 'translateY(-50%)', zIndex: 1
+  }} onClick={onClick}>
     <button className="btn d-flex align-items-center justify-content-center"
       style={{
         backgroundColor: '#00234D',
         color: '#fff',
         padding: '10px 15px',
-        borderRadius: '5%',
+        borderRadius: '5%'
       }}>
       &gt;
     </button>
@@ -29,65 +24,35 @@ const NextArrow = ({ onClick }) => (
 );
 
 const PrevArrow = ({ onClick }) => (
-  <div
-    className="custom-arrow prev-arrow"
-    style={{
-      position: 'absolute',
-      top: '50%',
-      left: '-20px',
-      transform: 'translateY(-50%)',
-      zIndex: 1,
-    }}
-    onClick={onClick}
-  >
+  <div className="custom-arrow prev-arrow" style={{
+    position: 'absolute', top: '50%', left: '-20px',
+    transform: 'translateY(-50%)', zIndex: 1
+  }} onClick={onClick}>
     <button className="btn d-flex align-items-center justify-content-center"
       style={{
         backgroundColor: '#00234D',
         color: '#fff',
         padding: '10px 15px',
-        borderRadius: '5%',
+        borderRadius: '5%'
       }}>
       &lt;
     </button>
   </div>
 );
 
-const blogItems = [
-  {
-    img: 'assets/img/products/1.jpg',
-    tag: 'Editing',
-    date: '30 December, 2022',
-    author: 'Lara Joe',
-    title: 'Training Classes',
-    link: 'article.html',
-  },
-  {
-    img: 'assets/img/products/2.jpg',
-    tag: 'Editing',
-    date: '30 December, 2022',
-    author: 'Lara Joe',
-    title: 'Exhibitions Creation',
-    link: 'article.html',
-  },
-  {
-    img: 'assets/img/products/3.jpg',
-    tag: 'Editing',
-    date: '30 December, 2022',
-    author: 'Lara Joe',
-    title: 'Organize Event',
-    link: 'article.html',
-  },
-  {
-    img: 'assets/img/products/1.jpg',
-    tag: 'Editing',
-    date: '30 December, 2022',
-    author: 'Lara Joe',
-    title: 'Training Classes',
-    link: 'article.html',
-  },
-];
-
 const LatestBlogs = () => {
+  const [blogs, setBlogs] = useState([]);
+
+  useEffect(() => {
+    // Replace URL with your actual backend endpoint
+    axios.get('http://localhost:5000/api/blogs')
+      .then(res => {
+        console.log('Blogs fetched:', res.data);
+        setBlogs(res.data); // Expected format: array of blogs
+      })
+      .catch(err => console.error('Error fetching blogs:', err));
+  }, []);
+
   const settings = {
     slidesToShow: 3,
     slidesToScroll: 1,
@@ -130,41 +95,35 @@ const LatestBlogs = () => {
 
             <div className="article-card-container">
               <Slider {...settings}>
-                {blogItems.map((item, idx) => (
+                {blogs.map((item, idx) => (
                   <div key={idx}>
                     <div className="article-card bg-transparent p-0 shadow-none">
-                      <Link className="article-card-img-wrapper d-block position-relative" to={item.link}>
+                      <Link to={`/blog/${item._id}`} className="article-card-img-wrapper d-block position-relative">
                         <img
-                          src={item.img}
+                          src={item.img || 'assets/img/default-blog.jpg'}
                           alt="blog-thumb"
                           className="article-card-img rounded"
                           style={{ width: "100%", height: "auto", display: "block", objectFit: "cover" }}
                         />
-                        <span
-                          className="article-tag article-tag-absolute rounded"
+                        <span className="article-tag article-tag-absolute rounded"
                           style={{
-                            position: "absolute",
-                            bottom: "10px",
-                            right: "10px",
-                            background: "#040457",
-                            color: "white",
-                            padding: "5px 10px",
-                            fontSize: "12px",
-                          }}
-                        >
+                            position: "absolute", bottom: "10px", right: "10px",
+                            background: "#040457", color: "white",
+                            padding: "5px 10px", fontSize: "12px"
+                          }}>
                           {item.tag}
                         </span>
                       </Link>
                       <p className="article-card-published text_12 d-flex align-items-center mt-2">
                         <span className="article-date d-flex align-items-center">
-                          📅 <span className="ms-2">{item.date}</span>
+                          📅 <span className="ms-2">{new Date(item.date).toLocaleDateString()}</span>
                         </span>
                         <span className="article-author d-flex align-items-center ms-4">
                           👤 <span className="ms-2">{item.author}</span>
                         </span>
                       </p>
                       <h2 className="article-card-heading heading_18 mt-1">
-                        <Link className="heading_18" to={item.link} style={{ textDecoration: "none" }}>
+                        <Link to={`/blog/${item._id}`} className="heading_18" style={{ textDecoration: "none" }}>
                           {item.title}
                         </Link>
                       </h2>

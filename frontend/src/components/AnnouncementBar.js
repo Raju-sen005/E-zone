@@ -1,28 +1,15 @@
-import React, { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { logoutUser } from '../utils/helper';
+import { useSelector } from 'react-redux';
 
 const AnnouncementBar = () => {
-  const [isLoggedIn, setIsLoggedIn] = useState(false);
-
-  useEffect(() => {
-    try {
-      const stored = localStorage.getItem('userData');
-      const user = stored ? JSON.parse(stored) : null;
-      setIsLoggedIn(!!user?.email);
-    } catch (err) {
-      console.error('Invalid user data in localStorage', err);
-      setIsLoggedIn(false);
-    }
-  }, []);
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const handleUserClick = (e) => {
-    if (isLoggedIn) {
-      e.preventDefault();
-      localStorage.removeItem('userData');
-      setIsLoggedIn(false);
-      window.location.reload();
-    }
-    // If not logged in, default link will navigate to login page
+    logoutUser();
+    console.log("---if---")
+    navigate("/login")
   };
 
   return (
@@ -56,7 +43,7 @@ const AnnouncementBar = () => {
                   to={isLoggedIn ? '#' : '/login'}
                   id="user-link"
                   onClick={handleUserClick}
-                  style={{ cursor: isLoggedIn ? 'pointer' : 'auto' }}
+                  style={{ cursor: "pointer" }}
                 >
                   <svg
                     className="icon icon-user"

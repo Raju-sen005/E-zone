@@ -293,8 +293,8 @@ const GoldProject = () => {
                                         <form className="product-form" action="#">
                                             <div
                                                 className="product-form-buttons d-flex align-items-center justify-content-between mt-4">
-                                                <Link to="cart.html" className="position-relative btn-atc btn-add-to-cart loader"
-                                                    onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
+                                                <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="position-relative btn-atc btn-add-to-cart loader"
+                                                    onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</button>
                                                 <Link to="wishlist.html" className="product-wishlist">
                                                     <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
                                                         fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -757,8 +757,8 @@ const GoldProject = () => {
                                                     data-product-rating="4" data-product-rating-count="22">
                                                     QUICKVIEW
                                                 </Link>
-                                                <Link to="cart.html" className="addtocart-btn btn-primary"
-                                                    onclick="addToCart('Album Sense')">ADD TO CART</Link>
+                                                <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary"
+                                                    onclick="addToCart('Album Sense')">ADD TO CART</button>
                                             </div>
 
                                             <Link to="wishlist.html" className="wishlist-btn card-wishlist">
@@ -798,8 +798,8 @@ const GoldProject = () => {
                                                     data-product-rating="4" data-product-rating-count="22">
                                                     QUICKVIEW
                                                 </Link>
-                                                <Link to="cart.html" className="addtocart-btn btn-primary"
-                                                    onclick="addToCart('Edius 11')">ADD TO CART</Link>
+                                                <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary"
+                                                    onclick="addToCart('Edius 11')">ADD TO CART</button>
                                             </div>
 
                                             <Link to="wishlist.html" className="wishlist-btn card-wishlist">
@@ -839,8 +839,8 @@ const GoldProject = () => {
                                                     data-product-rating="4" data-product-rating-count="22">
                                                     QUICKVIEW
                                                 </Link>
-                                                <Link to="cart.html" className="addtocart-btn btn-primary"
-                                                    onclick="addToCart('Cut Sense')">ADD TO CART</Link>
+                                                <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary"
+                                                    onclick="addToCart('Cut Sense')">ADD TO CART</button>
                                             </div>
 
                                             <Link to="wishlist.html" className="wishlist-btn card-wishlist">

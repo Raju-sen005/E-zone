@@ -2,15 +2,22 @@ import AnnouncementBar from '../components/AnnouncementBar'
 import Header from '../components/Header'
 import Breadcrumb from './Breadcrumb'
 import SingleBanner from './SingleBanner'
-import ProductPage from './ProductPage'
+import ProductPage from './product/ProductPage'
 import Footer from '../components/Footer'
 import ScrollUpButton from '../components/ScrollUpButton'
 import DrawerCart from '../components/DrawerCart'
 import DrawerMenu from '../components/DrawerMenu'
 import ProductQuickView from '../components/ProductQuickView'
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { useSelector } from 'react-redux'
 
 const AlbumSense = () => {
+
+  const navigate = useNavigate();
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
+  
+
+
   return (
     <>
 
@@ -399,27 +406,27 @@ const AlbumSense = () => {
               <div className="row">
 
                 <div className="col-md-4">
-                  <div className="nav flex-column nav-pills me-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab" role="tablist" aria-orientation="vertical">
+                  <div className="nav flex-column nav-pills me-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab" role="tablist" aria-orientation="vertical">
                     <button className="nav-link text-danger" id="v-pills-home-tab" data-bs-toggle="pill" data-bs-target="#v-pills-home" type="button" role="tab" aria-controls="v-pills-home" aria-selected="true">
                       Auto correct
-                    <hr style={{width:"100%",fontWeight:"bold"}} />
+                      <hr style={{ width: "100%", fontWeight: "bold" }} />
                     </button>
                     <button className="nav-link mb-3 text-black" id="v-pills-profile-tab" data-bs-toggle="pill" data-bs-target="#v-pills-profile" type="button" role="tab" aria-controls="v-pills-profile" aria-selected="false">Hue Saturation</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Blending Mode</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-1" type="button" role="tab" aria-controls="v-pills-tab-1" aria-selected="false">Brightness Contrast</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-2" type="button" role="tab" aria-controls="v-pills-tab-2" aria-selected="false">Change Color Light</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-3" type="button" role="tab" aria-controls="v-pills-tab-3" aria-selected="false">Color Balance</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-4" type="button" role="tab" aria-controls="v-pills-tab-4" aria-selected="false">Coloe Mixer Effect</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-5" type="button" role="tab" aria-controls="v-pills-tab-5" aria-selected="false">Fade</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-6" type="button" role="tab" aria-controls="v-pills-tab-6" aria-selected="false">Focus Tool</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-7-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-7" type="button" role="tab" aria-controls="v-pills-tab-7" aria-selected="false">Jewellery Highlight</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-8-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-8" type="button" role="tab" aria-controls="v-pills-tab-8" aria-selected="false">Curve & Level</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-9-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-9" type="button" role="tab" aria-controls="v-pills-tab-9" aria-selected="false">Pencil Effect</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-10-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-10" type="button" role="tab" aria-controls="v-pills-tab-10" aria-selected="false">Shadow And Highlight</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-11-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-11" type="button" role="tab" aria-controls="v-pills-tab-11" aria-selected="false">Tint And Highlight</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-12-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-12" type="button" role="tab" aria-controls="v-pills-tab-12" aria-selected="false">Toning</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-13-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-13" type="button" role="tab" aria-controls="v-pills-tab-13" aria-selected="false">Transparency On Selection</button>
-                    <button className="nav-link mb-3 text-black" style={{fontFamily:"poppins,sans-serif",fontSize:"15px"}} id="v-pills-tab-14-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-14" type="button" role="tab" aria-controls="v-pills-tab-14" aria-selected="false">Water Color Effect</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-messages-tab" data-bs-toggle="pill" data-bs-target="#v-pills-messages" type="button" role="tab" aria-controls="v-pills-messages" aria-selected="false">Blending Mode</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-1-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-1" type="button" role="tab" aria-controls="v-pills-tab-1" aria-selected="false">Brightness Contrast</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-2-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-2" type="button" role="tab" aria-controls="v-pills-tab-2" aria-selected="false">Change Color Light</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-3-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-3" type="button" role="tab" aria-controls="v-pills-tab-3" aria-selected="false">Color Balance</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-4-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-4" type="button" role="tab" aria-controls="v-pills-tab-4" aria-selected="false">Coloe Mixer Effect</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-5-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-5" type="button" role="tab" aria-controls="v-pills-tab-5" aria-selected="false">Fade</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-6-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-6" type="button" role="tab" aria-controls="v-pills-tab-6" aria-selected="false">Focus Tool</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-7-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-7" type="button" role="tab" aria-controls="v-pills-tab-7" aria-selected="false">Jewellery Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-8-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-8" type="button" role="tab" aria-controls="v-pills-tab-8" aria-selected="false">Curve & Level</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-9-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-9" type="button" role="tab" aria-controls="v-pills-tab-9" aria-selected="false">Pencil Effect</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-10-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-10" type="button" role="tab" aria-controls="v-pills-tab-10" aria-selected="false">Shadow And Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-11-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-11" type="button" role="tab" aria-controls="v-pills-tab-11" aria-selected="false">Tint And Highlight</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-12-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-12" type="button" role="tab" aria-controls="v-pills-tab-12" aria-selected="false">Toning</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-13-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-13" type="button" role="tab" aria-controls="v-pills-tab-13" aria-selected="false">Transparency On Selection</button>
+                    <button className="nav-link mb-3 text-black" style={{ fontFamily: "poppins,sans-serif", fontSize: "15px" }} id="v-pills-tab-14-tab" data-bs-toggle="pill" data-bs-target="#v-pills-tab-14" type="button" role="tab" aria-controls="v-pills-tab-14" aria-selected="false">Water Color Effect</button>
                   </div>
                 </div>
 
@@ -653,7 +660,7 @@ const AlbumSense = () => {
                           data-product-rating-count="22">
                           QUICKVIEW
                         </Link>
-                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Gold Projects Edit Zone')">ADD TO CART</Link>
+                        <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary" >ADD TO CART</button>
                       </div>
 
                       <Link to="/wishlist" className="wishlist-btn card-wishlist">
@@ -696,7 +703,7 @@ const AlbumSense = () => {
                           data-product-rating-count="22">
                           QUICKVIEW
                         </Link>
-                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Edius 11')">ADD TO CART</Link>
+                        <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary" >ADD TO CART</button>
                       </div>
 
                       <Link to="/wishlist" className="wishlist-btn card-wishlist">
@@ -739,7 +746,7 @@ const AlbumSense = () => {
                           data-product-rating-count="22">
                           QUICKVIEW
                         </Link>
-                        <Link to="/cart" className="addtocart-btn btn-primary" onclick="addToCart('Cut Sense')">ADD TO CART</Link>
+                        <button onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")} className="addtocart-btn btn-primary" >ADD TO CART</button>
                       </div>
 
                       <Link to="/wishlist" className="wishlist-btn card-wishlist">
