@@ -6,6 +6,10 @@ const router = require("./routes/api.route");
 require("dotenv").config();
 
 const blogRoutes = require("./routes/blogRoutes");
+const productRoutes = require("./routes/productRoutes");
+const eventRoutes = require("./routes/eventsRoutes");
+const galleryRoutes = require("./routes/galleryRoutes");
+const adminAuthRoutes = require('./routes/adminAuth');
 
 const app = express();
 const PORT = process.env.PORT || 5000;
@@ -26,7 +30,11 @@ mongoose.connect(process.env.MONGO_URI, {
 // Routes
 app.use("/api/v1", router);
 app.use("/api/blogs", blogRoutes);  // ✅ यही रखें
-
+app.use("/api/products", productRoutes); // ✅ यही रखें
+app.use("/api/events", eventRoutes); // ✅ यही रखें
+app.use("/api/gallery", galleryRoutes); // ✅ यही रखें
+app.use('/api/admin', adminAuthRoutes);
+app.use('/api/admin', adminAuthRoutes);
 app.get("/", (req, res) => {
   res.send("API चल रही है...");
 });

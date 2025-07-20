@@ -1,13 +1,13 @@
-const mongoose = require('mongoose');
+const mongoose = require('mongoose'); // ✅ Required line
 
 const blogSchema = new mongoose.Schema({
   title: String,
   content: String,
-   date: {
+  date: {
     type: Date,
-    default: Date.now, // ✅ This sets the date to current time when order is created
+    default: Date.now, // ✅ Automatically sets date
   },
-  categories: [String], // array to support multiple categories
+  image: String
 }, { timestamps: true });
 
 module.exports = mongoose.model('Blog', blogSchema);

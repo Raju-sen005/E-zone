@@ -1,4 +1,5 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AnnouncementBar from '../components/AnnouncementBar';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
@@ -9,40 +10,25 @@ import ProductQuickviewModal from '../components/ProductQuickView';
 import { Link } from 'react-router-dom';
 
 const Gallery = () => {
-  const [activeGallery, setActiveGallery] = useState(null);
+  const [galleries, setGalleries] = useState([]);
+  const [activeGalleryIndex, setActiveGalleryIndex] = useState(null);
 
-  const galleries = {
-    1: {
-      title: 'Edit Zone Classes',
-      images: [
-        'assets/img/products/1.jpg',
-        'assets/img/products/2.jpg',
-        'assets/img/products/3.jpg',
-      ],
-    },
-    2: {
-      title: 'Edit Zone',
-      images: [
-        'assets/img/gallery/1.jpg',
-        'assets/img/gallery/2.jpg',
-        'assets/img/gallery/3.jpg',
-        'assets/img/gallery/4.jpg',
-        'assets/img/gallery/5.jpg',
-        'assets/img/gallery/6.jpg',
-      ],
-    },
-    3: {
-      title: 'Edit Zone Gold Projects',
-      images: [
-        'assets/img/gallery/7.jpg',
-        'assets/img/gallery/8.jpg',
-        'assets/img/gallery/9.jpg',
-        'assets/img/gallery/10.jpg',
-        'assets/img/gallery/11.jpg',
-        'assets/img/gallery/12.jpg',
-        'assets/img/gallery/13.jpg',
-      ],
-    },
+  useEffect(() => {
+    fetchGalleries();
+  }, []);
+
+  const fetchGalleries = async () => {
+    try {
+      const res = await axios.get('http://localhost:5001/api/gallery');
+      console.log('Fetched galleries:', res.data);
+      setGalleries(res.data);
+    } catch (err) {
+      console.error('Failed to load gallery:', err);
+    }
+  };
+
+  const getImageUrl = (imgPath) => {
+    return imgPath?.startsWith('http') ? imgPath : `http://localhost:5001/${imgPath}`;
   };
 
   return (
@@ -72,27 +58,45 @@ const Gallery = () => {
         <section className="pt-5 mt-2">
           <div className="container">
             <div className="row">
-              {Object.entries(galleries).map(([key, gallery]) => (
-                <div className="col-md-4 mb-3" key={key}>
-                  <div
-                    className="gallery-box"
-                    onClick={() => setActiveGallery(key)}
-                    data-bs-toggle="modal"
-                    data-bs-target="#imageModal"
-                  >
-                    <div className="front-image">
-                      <img src={gallery.images[0]} alt={gallery.title} className="img-fluid rounded" style={{ width: "100%", height: "267px", objectFit: "cover" }} />
-                      <div className="box-title">{gallery.title}</div>
+              {galleries && galleries.length > 0 ? (
+                galleries.map((gallery, index) => (
+                  <div className="col-md-4 mb-3" key={gallery._id}>
+                    <div
+                      className="gallery-box"
+                      onClick={() => setActiveGalleryIndex(index)}
+                      data-bs-toggle="modal"
+                      data-bs-target="#imageModal"
+                    >
+                      <div className="front-image">
+                        <img
+                          src={
+                            gallery.imageUrl && gallery.imageUrl.length > 0
+                              ? getImageUrl(gallery.imageUrl[0])
+                              : "/default.jpg" // fallback image
+                          }
+                          alt={gallery.title}
+                          className="img-fluid rounded"
+                          style={{
+                            width: "100%",
+                            height: "267px",
+                            objectFit: "cover"
+                          }}
+                        />
+                        <div className="box-title">{gallery.title}</div>
+                      </div>
                     </div>
                   </div>
-                </div>
-              ))}
+                ))
+              ) : (
+                <p>No galleries available.</p>
+              )}
             </div>
           </div>
         </section>
+
       </main>
 
-      {/* Bootstrap Modal (auto-resize) */}
+      {/* Modal for gallery preview */}
       <div
         className="modal fade"
         id="imageModal"
@@ -107,7 +111,7 @@ const Gallery = () => {
               className="btn-close"
               data-bs-dismiss="modal"
               aria-label="Close"
-              onClick={() => setActiveGallery(null)}
+              onClick={() => setActiveGalleryIndex(null)}
               style={{
                 position: "absolute",
                 top: "10px",
@@ -115,20 +119,20 @@ const Gallery = () => {
                 fontSize: "1em",
                 color: "#333",
                 cursor: "pointer",
-                userSelect: "none",
-                padding: "5px"
               }}
             ></button>
             <div className="modal-body">
               <div className="row">
-                {galleries[activeGallery]?.images.map((img, idx) => (
+                {galleries[activeGalleryIndex]?.imageUrl?.map((img, idx) => (
                   <div className="col-md-4 mb-3" key={idx}>
-                    <img
-                      src={img}
-                      alt={`gallery-${idx}`}
-                      className="img-fluid rounded shadow-sm"
-                      style={{ maxHeight: "300px", objectFit: "cover" }}
-                    />
+                    <td>
+                      <img
+                        src={item.imageUrl ? `http://localhost:5001${item.imageUrl}` : "https://via.placeholder.com/100x100?text=No+Image"}
+                        alt="Gallery"
+                        width="100"
+                        onError={handleImageError}
+                      />
+                    </td>
                   </div>
                 ))}
               </div>
@@ -137,14 +141,12 @@ const Gallery = () => {
         </div>
       </div>
 
-      {/* Footer & Extras */}
       <Footer />
       <ScrollUpButton />
       <DrawerMenu />
       <DrawerCart />
       <ProductQuickviewModal />
 
-      {/* Custom Styles */}
       <style>{`
         .gallery-box {
           position: relative;

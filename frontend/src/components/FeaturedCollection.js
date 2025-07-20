@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import axios from 'axios';
 import AOS from 'aos';
 import Slider from 'react-slick';
 import 'aos/dist/aos.css';
@@ -13,7 +14,7 @@ const FeaturedCollection = () => {
 
     const navigate = useNavigate();
     const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
-    
+
     useEffect(() => {
         AOS.init({ duration: 1000 });
     }, []);
@@ -52,38 +53,24 @@ const FeaturedCollection = () => {
         asNavFor: '.large-slider',
     };
 
-    const products = [
-        {
-            id: 'Edius-11',
-            name: 'Edius 11',
-            price: 1000,
-            comparePrice: 1500,
-            images: ['edius-1.jpg', 'edius-2.jpg', 'edius-3.jpg'],
-            rating: 4,
-            ratingCount: 22,
-            img: 'grass-valley-edius-11.png',
-        },
-        {
-            id: 'Album-Sense',
-            name: 'Album Sense',
-            price: 1529,
-            comparePrice: 1759,
-            images: ['as-1.png', 'as-2.jpg', 'as-3.jpg'],
-            rating: 4,
-            ratingCount: 22,
-            img: 'insidelogic-album-sense.png',
-        },
-        {
-            id: 'Cut-Sense',
-            name: 'Gold Projects Edit Zone',
-            price: 1529,
-            comparePrice: 1759,
-            images: ['as-4.jpg', 'as-5.jpg', 'as-6.jpg'],
-            rating: 4,
-            ratingCount: 22,
-            img: 'cut.png',
-        },
-    ];
+
+
+    const [products, setProducts] = useState([]);
+
+    // Fetch products from backend API
+    useEffect(() => {
+        const fetchProducts = async () => {
+            try {
+                const response = await axios.get("http://localhost:5000/api/products"); // Adjust endpoint if needed
+                console.log("Fetched products:", response.data);
+                setProducts(response.data);
+            } catch (error) {
+                console.error("Error fetching products:", error);
+            }
+        };
+
+        fetchProducts();
+    }, []);
 
     return (
         <>
@@ -95,35 +82,60 @@ const FeaturedCollection = () => {
                         </div>
                         <div className="row">
                             {products.map((product, index) => (
-                                <div className="col-lg-4 col-md-6 col-12" key={index} data-aos="fade-up" data-aos-duration="700">
+                                <div
+                                    className="col-lg-4 col-md-6 col-12"
+                                    key={index}
+                                    data-aos="fade-up"
+                                    data-aos-duration="700"
+                                >
                                     <div className="product-card">
                                         <div className="product-card-img">
-                                            <img className="primary-img" src={`assets/img/products/${product.img}`} alt={product.name} />
+                                            <img src={product.image} className="product-icn" alt="" />
                                             <div className="product-card-action product-card-action-2">
-                                                <button className="quickview-btn btn-primary" onClick={() => openModal(product)}>
+                                                <button
+                                                    className="quickview-btn btn-primary"
+                                                    onClick={() => openModal(product)}
+                                                >
                                                     QUICKVIEW
                                                 </button>
-                                                <button class="addtocart-btn btn-primary"
-                                                    onClick={() => isLoggedIn ? navigate("/cart") : navigate("/login")}>ADD TO CART</button>
+                                                <button
+                                                    className="addtocart-btn btn-primary"
+                                                    onClick={() =>
+                                                        isLoggedIn ? navigate("/cart") : navigate("/login")
+                                                    }
+                                                >
+                                                    ADD TO CART
+                                                </button>
                                             </div>
-                                            <a href="/wishlist" className="wishlist-btn card-wishlist"> <svg class="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22"
-                                                fill="none" xmlns="http://www.w3.org/2000/svg">
-                                                <path
-                                                    d="M6.96429 0.000183105C3.12305 0.000183105 0 3.10686 0 6.84843C0 8.15388 0.602121 9.28455 1.16071 10.1014C1.71931 10.9181 2.29241 11.4425 2.29241 11.4425L12.3326 21.3439L13 22.0002L13.6674 21.3439L23.7076 11.4425C23.7076 11.4425 26 9.45576 26 6.84843C26 3.10686 22.877 0.000183105 19.0357 0.000183105C15.8474 0.000183105 13.7944 1.88702 13 2.68241C12.2056 1.88702 10.1526 0.000183105 6.96429 0.000183105ZM6.96429 1.82638C9.73912 1.82638 12.3036 4.48008 12.3036 4.48008L13 5.25051L13.6964 4.48008C13.6964 4.48008 16.2609 1.82638 19.0357 1.82638C21.8613 1.82638 24.1429 4.10557 24.1429 6.84843C24.1429 8.25732 22.4018 10.1584 22.4018 10.1584L13 19.4036L3.59821 10.1584C3.59821 10.1584 3.14844 9.73397 2.69866 9.07411C2.24888 8.41426 1.85714 7.55466 1.85714 6.84843C1.85714 4.10557 4.13867 1.82638 6.96429 1.82638Z"
-                                                    fill="black" />
-                                            </svg></a>
+                                            <a href="/wishlist" className="wishlist-btn card-wishlist">
+                                                <svg className="icon icon-wishlist" width="26" height="22" viewBox="0 0 26 22" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                                    <path
+                                                        d="M6.96429 0C3.12305 0 0 3.107 0 6.84857C0 8.15402 0.602121 9.28469 1.16071 10.1015C1.71931 10.9183 2.29241 11.4427 2.29241 11.4427L12.3326 21.3441L13 22.0004L13.6674 21.3441L23.7076 11.4427C23.7076 11.4427 26 9.456 26 6.84857C26 3.107 22.877 0 19.0357 0C15.8474 0 13.7944 1.88684 13 2.68223C12.2056 1.88684 10.1526 0 6.96429 0Z"
+                                                        fill="black"
+                                                    />
+                                                </svg>
+                                            </a>
                                         </div>
                                         <div className="product-card-details text-center">
                                             <h3 className="product-card-title">{product.name}</h3>
                                             <div className="product-card-price">
-                                                <span className="card-price-regular">₹{product.price}</span>
-
-                                                <span className="card-price-compare text-decoration-line-through">₹{product.comparePrice}</span>
+                                                {/* <span className="card-price-regular">₹{product.price}</span> */}
+                                                {product.sellPrice}
+                                                {product.sellPrice && (
+                                                    <span className="card-price-compare text-decoration-line-through">
+                                                        ₹{product.sellPrice} {/* Example original price */}
+                                                    </span>
+                                                )}
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                             ))}
+                            {products.length === 0 && (
+                                <div className="text-center py-5">
+                                    <p>No products found.</p>
+                                </div>
+                            )}
                         </div>
                     </div>
                 </div>
@@ -142,26 +154,39 @@ const FeaturedCollection = () => {
                                     <ProductImageGallery />
                                     <div className="col-lg-6 col-md-12 col-12">
                                         <div className="product-gallery product-gallery-vertical d-flex">
+
+                                            {/* Large Image Slider */}
                                             <div className="product-img-large">
                                                 <Slider {...largeSliderSettings} className="large-slider">
-                                                    {selectedProduct.images.map((image, index) => (
+                                                    {selectedProduct.images?.map((image, index) => (
                                                         <div className="img-large-wrapper" key={index}>
-                                                            <img src={`assets/img/products/${image}`} alt={selectedProduct.name} />
+                                                            <img
+                                                                src={`assets/img/products/${image}`}
+                                                                className="product-icn"
+                                                                alt={`${selectedProduct.name} ${index + 1}`}
+                                                            />
                                                         </div>
                                                     ))}
                                                 </Slider>
                                             </div>
+
+                                            {/* Thumbnail Slider */}
                                             <div className="product-img-thumb ms-3">
                                                 <Slider {...thumbSliderSettings} className="thumb-slider">
-                                                    {selectedProduct.images.map((image, index) => (
+                                                    {selectedProduct.images?.map((image, index) => (
                                                         <div className="img-thumb-wrapper" key={index}>
-                                                            <img src={`assets/img/products/${image}`} alt={selectedProduct.name} />
+                                                            <img
+                                                                src={`assets/img/products/${image}`}
+                                                                alt={`${selectedProduct.name} thumbnail ${index + 1}`}
+                                                            />
                                                         </div>
                                                     ))}
                                                 </Slider>
                                             </div>
+
                                         </div>
                                     </div>
+
 
                                     <div className="col-lg-6 col-md-12 col-12">
                                         <div className="product-details ps-lg-4">
@@ -181,9 +206,9 @@ const FeaturedCollection = () => {
                                                 <span className="rating-count ms-2">({selectedProduct.ratingCount})</span>
                                             </div>
                                             <div className="product-price-wrapper mb-4">
-                                                <span className="product-price regular-price">₹{selectedProduct.price}</span>
+                                                <span className="product-price regular-price">₹{selectedProduct.sellPrice}</span>
 
-                                                <del className="product-price compare-price ms-2">₹{selectedProduct.comparePrice}</del>
+                                                <del className="product-price compare-price ms-2">₹{selectedProduct.sellPrice}</del>
                                             </div>
                                             <QuantityAndMessage />
                                             <form class="product-form" action="#">

@@ -14,5 +14,4 @@ router.use("/order", orderRoutes);
 router.use('/cart', cartRoutes);
 router.use('/wishlist', wishlistRoutes);
 router.use('/shipping', shippingRoutes);
-
 module.exports = router;

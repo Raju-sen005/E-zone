@@ -16,7 +16,7 @@ const productSchema = new mongoose.Schema(
                 public_id: String,
             },
         ],
-        mrp: {
+        discountPrice: {
             type: Number,
             required: true,
         },
